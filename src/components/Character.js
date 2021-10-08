@@ -17,11 +17,24 @@ const NameStyle = styled.h2`
     font-size: 3rem;
 `;
 
+const ButtonStyle = styled.button`
+    padding: 1%;
+    font-family: 'Gemunu Libre', sans-serif;
+    font-size: 2rem;
+    margin-bottom: 2%;
+    background-color: #EADDCA;
+`;
+
 export default function Character({info}) {
+
+    const [show, setShow] = React.useState(false)
 
     return (
         <CharacterStyle>
             <NameStyle>{info.name}</NameStyle>
+            <ButtonStyle onClick={() => setShow(!show)}>{show ? 'Hide Details' : 'Show Details'}</ButtonStyle>
+            {show && 
+            <div>
             <InfoStyle>
                 <h3>Gender: {info.gender}</h3>
                 <h3>Height: {info.height}</h3>
@@ -31,6 +44,7 @@ export default function Character({info}) {
                 <h3>Hair Color: {info.hair_color}</h3>
                 <h3>Skin Color: {info.skin_color}</h3>
             </InfoStyle>
+            </div>}
         </CharacterStyle>
     )
 }
